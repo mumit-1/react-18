@@ -6,6 +6,7 @@ import {
 import Root from "./Root";
 import Form from "./Form";
 import User from "./User";
+import Update from "./Update";
 const router = createBrowserRouter([
     {
       path: "/",
@@ -20,6 +21,11 @@ const router = createBrowserRouter([
                 path: "/users",
                 element: <User></User>,
                 loader: ()=>fetch("http://localhost:3200/user")
+            },
+            {
+                path: "/user/:id",
+                element: <Update></Update>,
+                loader: ({params})=>fetch(`http://localhost:3200/user/${params.id}`)
             }
       ],
     },
